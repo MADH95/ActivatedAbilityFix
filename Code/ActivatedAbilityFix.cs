@@ -30,7 +30,5 @@ public class Plugin : BaseUnityPlugin
 public static class PlayableCardExtension
 {
     public static bool HasActivatedAbility( this PlayableCard card )
-    {
-        return card.Info.abilities.Exists( elem => AbilitiesUtil.GetInfo( elem ).activated );
-    }
+        => card.Info.Abilities.Exists( elem => AbilitiesUtil.GetInfo( elem ).activated );
 }

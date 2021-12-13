@@ -1,15 +1,18 @@
 ﻿
+using System.Collections;
+
 using DiskCardGame;
 
 using HarmonyLib;
 
 namespace ActivatedAbilityFix;
 
-[HarmonyPatch( typeof( ActivatedAbilityBehaviour ), nameof( ActivatedAbilityBehaviour.RespondsToResolveOnBoard ) )]
-public class ActivatedAbilityBehaviourPatch
+[HarmonyPatch( typeof( ActivatedAbilityBehaviour ) )]
+public static class ActivatedAbilityBehaviourPatch
 {
     [HarmonyPostfix]
-    public static void PostFix( ref bool __result )
+    [HarmonyPatch( nameof( ActivatedAbilityBehaviour.RespondsToResolveOnBoard ) )]
+    public static void RespondsToResolveOnBoard_PostFix( ref bool __result )
     {
         __result &= SaveManager.saveFile.IsPart2;
     }
