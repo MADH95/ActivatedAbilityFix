@@ -9,6 +9,7 @@ using HarmonyLib;
 namespace ActivatedAbilityFix;
 
 [BepInPlugin( PluginGuid, PluginName, PluginVersion )]
+[BepInDependency( "MADH.inscryption.SigilArtPatch", BepInDependency.DependencyFlags.HardDependency )]
 public class Plugin : BaseUnityPlugin
 {
     public const string PluginGuid = "MADH.inscryption.ActivatedAbilityFix";
@@ -30,5 +31,12 @@ public class Plugin : BaseUnityPlugin
 public static class PlayableCardExtension
 {
     public static bool HasActivatedAbility( this PlayableCard card )
-        => card.Info.Abilities.Exists( elem => AbilitiesUtil.GetInfo( elem ).activated );
+    {
+        if ( !card.Info.Abilities.Exists( elem => AbilitiesUtil.GetInfo( elem ).activated ) )
+        {
+            return card.temporaryMods.Exists( elem => elem.abilities.Exists( elem2 => AbilitiesUtil.GetInfo( elem2 ).activated ) );
+        }
+
+        return true;
+    }
 }

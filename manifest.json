@@ -1,0 +1,9 @@
+{
+	"name": "Activated_Sigil_Fix",
+	"version_number": "1.0.0",
+	"website_url": "",
+	"description": "Mod to enable activated sigils in act 1 & 3",
+	"dependencies": [
+		"MADH95Mods-SigilArtPatch-1.5.1"
+	]
+}
