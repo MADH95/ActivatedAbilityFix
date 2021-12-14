@@ -9,12 +9,11 @@ using HarmonyLib;
 namespace ActivatedAbilityFix;
 
 [BepInPlugin( PluginGuid, PluginName, PluginVersion )]
-[BepInDependency( "MADH.inscryption.SigilArtPatch", BepInDependency.DependencyFlags.HardDependency )]
 public class Plugin : BaseUnityPlugin
 {
     public const string PluginGuid = "MADH.inscryption.ActivatedAbilityFix";
     private const string PluginName = "ActivatedAbilityFix";
-    private const string PluginVersion = "1.0.0.0";
+    private const string PluginVersion = "1.0.1.0";
 
     internal static ManualLogSource Log;
 
